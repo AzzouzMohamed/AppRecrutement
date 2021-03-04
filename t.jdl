@@ -1,0 +1,82 @@
+
+
+entity Candidat{
+ fullName String required
+ email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+ diplome String required
+ phone String required
+ city String required
+
+}
+
+entity Resultat{ 
+note Long required, 
+mention Mention required
+}
+
+entity Poste 
+{ 
+	nomDuPoste String required
+	description String required
+}
+
+
+entity Examin 
+{  
+domaineDeCompetence String required
+}
+
+
+
+entity Question 
+{
+enonce String required,
+timing Long required, 
+niveaudedifficulte Difficulte required
+}
+
+
+entity Reponse 
+{
+enoncedelaReponse  String required,
+verite Boolean required
+}
+enum Difficulte{
+DEBUTANT, AMATEUR, INTERMEDIAIRE, EXPERT
+}
+
+enum Mention {
+ACCEPTE ENTRETIEN, REJETE
+}
+
+
+
+
+
+relationship ManyToMany
+{
+//
+Poste{examin(domaineDeCompetence)} to Examin{poste(nomDuPoste)}
+}
+
+relationship OneToMany
+{ 
+Poste to Candidat{Poste(nomDuPoste)} 
+Examin to Question{examin(domaineDeCompetence)}
+Question{reponse} to Reponse{question(enonce)} 
+Examin to Resultat{examin(domaineDeCompetence)}
+Candidat to  Resultat{candidat(fullName)}
+
+}
+
+
+
+
+
+relationship OneToOne 
+{
+Candidat{user(login)} to User
+
+}
+
+

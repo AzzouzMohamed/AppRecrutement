@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span>Questions</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-question" [routerLink]="['/question/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Question
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="questions?.length === 0">
+        <span>No questions found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="questions && questions.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Enonce</span></th>
+                    <th scope="col" ><span>Timing</span></th>
+                    <th scope="col" ><span>Niveaudedifficulte</span></th>
+                    <th scope="col" ><span>Examin</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let question of questions ;trackBy: trackId">
+                    <td><a [routerLink]="['/question', question.id, 'view']">{{ question.id }}</a></td>
+                    <td>{{ question.enonce }}</td>
+                    <td>{{ question.timing }}</td>
+                    <td>{{ question.niveaudedifficulte }}</td>
+                    <td>
+                        <div *ngIf="question.examin">
+                            <a [routerLink]="['/examin', question.examin?.id, 'view']" >{{ question.examin?.domaineDeCompetence }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/question', question.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/question', question.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(question)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

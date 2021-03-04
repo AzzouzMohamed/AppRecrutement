@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="resultat">
+            <h2><span>Resultat</span> {{ resultat.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Note</span></dt>
+                <dd>
+                    <span>{{ resultat.note }}</span>
+                </dd>
+                <dt><span>Mention</span></dt>
+                <dd>
+                    <span>{{ resultat.mention }}</span>
+                </dd>
+                <dt><span>Examin</span></dt>
+                <dd>
+                    <div *ngIf="resultat.examin">
+                        <a [routerLink]="['/examin', resultat.examin?.id, 'view']">{{ resultat.examin?.domaineDeCompetence }}</a>
+                    </div>
+                </dd>
+                <dt><span>Candidat</span></dt>
+                <dd>
+                    <div *ngIf="resultat.candidat">
+                        <a [routerLink]="['/candidat', resultat.candidat?.id, 'view']">{{ resultat.candidat?.fullName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/resultat', resultat.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

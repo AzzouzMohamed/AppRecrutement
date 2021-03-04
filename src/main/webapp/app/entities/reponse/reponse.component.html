@@ -1,0 +1,69 @@
+<div>
+    <h2 id="page-heading">
+        <span>Reponses</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-reponse" [routerLink]="['/reponse/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Reponse
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="reponses?.length === 0">
+        <span>No reponses found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="reponses && reponses.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Enoncedela Reponse</span></th>
+                    <th scope="col" ><span>Verite</span></th>
+                    <th scope="col" ><span>Question</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let reponse of reponses ;trackBy: trackId">
+                    <td><a [routerLink]="['/reponse', reponse.id, 'view']">{{ reponse.id }}</a></td>
+                    <td>{{ reponse.enoncedelaReponse }}</td>
+                    <td>{{ reponse.verite }}</td>
+                    <td>
+                        <div *ngIf="reponse.question">
+                            <a [routerLink]="['/question', reponse.question?.id, 'view']" >{{ reponse.question?.enonce }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/reponse', reponse.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/reponse', reponse.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(reponse)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

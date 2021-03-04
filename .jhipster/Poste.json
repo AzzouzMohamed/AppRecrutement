@@ -1,0 +1,46 @@
+{
+  "name": "Poste",
+  "fields": [
+    {
+      "fieldName": "nomDuPoste",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "candidat",
+      "otherEntityRelationshipName": "poste",
+      "relationshipName": "candidat"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "examin",
+      "otherEntityRelationshipName": "poste",
+      "relationshipName": "examin",
+      "otherEntityField": "domaineDeCompetence",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20210304110705",
+  "entityTableName": "poste",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Resultat.
+    -->
+    <changeSet id="20210304110605-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="examin_id"
+                                 baseTableName="resultat"
+                                 constraintName="fk_resultat_examin_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="examin"/>
+
+        <addForeignKeyConstraint baseColumnNames="candidat_id"
+                                 baseTableName="resultat"
+                                 constraintName="fk_resultat_candidat_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="candidat"/>
+
+    </changeSet>
+</databaseChangeLog>

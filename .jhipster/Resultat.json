@@ -1,0 +1,47 @@
+{
+  "name": "Resultat",
+  "fields": [
+    {
+      "fieldName": "note",
+      "fieldType": "Long",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "mention",
+      "fieldType": "Mention",
+      "fieldValues": "ACCEPTE,ENTRETIEN,REJETE",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "examin",
+      "otherEntityRelationshipName": "resultat",
+      "relationshipName": "examin",
+      "otherEntityField": "domaineDeCompetence"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "candidat",
+      "otherEntityRelationshipName": "resultat",
+      "relationshipName": "candidat",
+      "otherEntityField": "fullName"
+    }
+  ],
+  "changelogDate": "20210304110605",
+  "entityTableName": "resultat",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Reponse",
+  "fields": [
+    {
+      "fieldName": "enoncedelaReponse",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "verite",
+      "fieldType": "Boolean",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "question",
+      "otherEntityRelationshipName": "reponse",
+      "relationshipName": "question",
+      "otherEntityField": "enonce"
+    }
+  ],
+  "changelogDate": "20210304111005",
+  "entityTableName": "reponse",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Examin",
+  "fields": [
+    {
+      "fieldName": "domaineDeCompetence",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "question",
+      "otherEntityRelationshipName": "examin",
+      "relationshipName": "question"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "resultat",
+      "otherEntityRelationshipName": "examin",
+      "relationshipName": "resultat"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "poste",
+      "otherEntityRelationshipName": "examin",
+      "relationshipName": "poste",
+      "otherEntityField": "nomDuPoste",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20210304110805",
+  "entityTableName": "examin",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="candidat">
+            <h2><span>Candidat</span> {{ candidat.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Full Name</span></dt>
+                <dd>
+                    <span>{{ candidat.fullName }}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{ candidat.email }}</span>
+                </dd>
+                <dt><span>Diplome</span></dt>
+                <dd>
+                    <span>{{ candidat.diplome }}</span>
+                </dd>
+                <dt><span>Phone</span></dt>
+                <dd>
+                    <span>{{ candidat.phone }}</span>
+                </dd>
+                <dt><span>City</span></dt>
+                <dd>
+                    <span>{{ candidat.city }}</span>
+                </dd>
+                <dt><span>User</span></dt>
+                <dd>
+                    {{ candidat.user?.login }}
+                </dd>
+                <dt><span>Poste</span></dt>
+                <dd>
+                    <div *ngIf="candidat.poste">
+                        <a [routerLink]="['/poste', candidat.poste?.id, 'view']">{{ candidat.poste?.nomDuPoste }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/candidat', candidat.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

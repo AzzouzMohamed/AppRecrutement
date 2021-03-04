@@ -1,0 +1,53 @@
+{
+  "name": "Question",
+  "fields": [
+    {
+      "fieldName": "enonce",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "timing",
+      "fieldType": "Long",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "niveaudedifficulte",
+      "fieldType": "Difficulte",
+      "fieldValues": "DEBUTANT,AMATEUR,INTERMEDIAIRE,EXPERT",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "reponse",
+      "otherEntityRelationshipName": "question",
+      "relationshipName": "reponse"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "examin",
+      "otherEntityRelationshipName": "question",
+      "relationshipName": "examin",
+      "otherEntityField": "domaineDeCompetence"
+    }
+  ],
+  "changelogDate": "20210304110905",
+  "entityTableName": "question",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
